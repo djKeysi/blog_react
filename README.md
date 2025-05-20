@@ -17,3 +17,14 @@
 - роли - roles: id / name
 - статьи - posts: id / title / image_url / content / published_at
 - коментарии - comments: id / author_id / post_id / content
+
+Схема состояния на BFF:
+
+- сессия текущего пользов:login / password / role
+
+Схема для редакс сторе (на клиенте):
+
+- user: id / login / roleId
+- posts: массив post: id / title / imageUrl / publishedAt / commentsCount
+- post: id / title / imageUrl / content / publishedAt / comments: массив comment: id / author / content / publishedAt
+- users : массив user: id /login / registeredAt /role
