@@ -28,3 +28,8 @@
 - posts: массив post: id / title / imageUrl / publishedAt / commentsCount
 - post: id / title / imageUrl / content / publishedAt / comments: массив comment: id / author / content / publishedAt
 - users : массив user: id /login / registeredAt /role
+
+// создание картинки
+https://picsum.photos/280/150
+
+json-server --watch src/db.json --port 3005
