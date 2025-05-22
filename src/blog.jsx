@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './index.css';
 import styled from 'styled-components';
+import { Header } from './components';
 
 const AppColumn = styled.div`
 	display: flex;
@@ -19,21 +20,13 @@ const Content = styled.div`
 const H2 = styled.div`
 	text-align: center;
 `;
-const StyledHeader = styled(Header)`
-	height: 120px;
-`;
-const Header = ({ className }) => (
-	<header className={className}>
-		<i class="fa fa-code" aria-hidden="true"></i>
-	</header>
-);
 
 const Footer = () => <div>Футер</div>;
 
 export const Blog = () => {
 	return (
 		<AppColumn>
-			<StyledHeader />
+			<Header />
 			<Content>
 				<H2>Контент страницы</H2>
 				<Routes>
