@@ -2,6 +2,16 @@ import { Route, Routes } from 'react-router-dom';
 import './index.css';
 import styled from 'styled-components';
 
+const AppColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 1000px;
+	min-height: 100%;
+	margin: 0 auto;
+	background-color: #fff;
+`;
+
 const Content = styled.div`
 	padding: 120px 0;
 `;
@@ -9,14 +19,21 @@ const Content = styled.div`
 const H2 = styled.div`
 	text-align: center;
 `;
+const StyledHeader = styled(Header)`
+	height: 120px;
+`;
+const Header = ({ className }) => (
+	<header className={className}>
+		<i class="fa fa-code" aria-hidden="true"></i>
+	</header>
+);
 
-const Header = () => <div>Шапка</div>;
 const Footer = () => <div>Футер</div>;
 
 export const Blog = () => {
 	return (
-		<>
-			<Header />
+		<AppColumn>
+			<StyledHeader />
 			<Content>
 				<H2>Контент страницы</H2>
 				<Routes>
@@ -30,6 +47,6 @@ export const Blog = () => {
 				</Routes>
 			</Content>
 			<Footer />
-		</>
+		</AppColumn>
 	);
 };
