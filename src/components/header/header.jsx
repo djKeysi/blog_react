@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Logo } from './components';
+import { ControlPanel, Logo } from './components';
 
 const Discription = styled.div`
 	font-style: italic;
@@ -15,6 +15,7 @@ const HeaderContainer = ({ className }) => (
 			<br />
 			Разбор ошибок
 		</Discription>
+		<ControlPanel />
 	</header>
 );
 

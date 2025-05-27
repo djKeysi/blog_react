@@ -1,15 +1,17 @@
 import styled from 'styled-components';
+import { Icon } from '../../../../components';
+import { Link } from 'react-router-dom';
 
-const IconContainer = ({ className }) => (
-	<div className={className}>
-		<i className="fa fa-code" aria-hidden="true"></i>
-	</div>
-);
+// const IconContainer = ({ className }) => (
+// 	<div className={className}>
+// 		<i className="fa fa-code" aria-hidden="true"></i>
+// 	</div>
+// );
 
-const Icon = styled(IconContainer)`
-	font-size: 70px;
-	margin-right: 10px;
-`;
+// const Icon = styled(IconContainer)`
+// 	font-size: 70px;
+// 	margin-right: 10px;
+// `;
 
 const LargeText = styled.div`
 	font-size: 48px;
@@ -23,16 +25,16 @@ const SmallText = styled.div`
 `;
 
 const LogoContainer = ({ className }) => (
-	<div className={className}>
-		<Icon />
+	<Link className={className} to="/">
+		<Icon id="fa-code" size="70px" margin="0 10px 0 0" />
 		<div>
 			<LargeText>Блог</LargeText>
 			<SmallText>веб-разработчика</SmallText>
 		</div>
-	</div>
+	</Link>
 );
 
 export const Logo = styled(LogoContainer)`
 	display: flex;
-	margin-top: -14px;
+	margin-top: -21px;
 `;
