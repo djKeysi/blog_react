@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './index.css';
 import styled from 'styled-components';
-import { Header } from './components';
+import { Footer, Header } from './components';
 
 const AppColumn = styled.div`
 	display: flex;
@@ -21,7 +21,7 @@ const H2 = styled.div`
 	text-align: center;
 `;
 
-const Footer = () => <div>Футер</div>;
+// const Footer = () => <div>Футер</div>;
 
 export const Blog = () => {
 	return (
