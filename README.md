@@ -33,3 +33,5 @@
 https://picsum.photos/280/150
 
 json-server --watch src/db.json --port 3005
+
+npm i
