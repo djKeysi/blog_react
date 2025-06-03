@@ -2,6 +2,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
+import { useState } from 'react';
+import { server } from '../../../BFF/server';
+import styled from 'styled-components';
+
 const authFormSchema = yup.object().shape({
 	login: yup
 		.string()
@@ -20,7 +24,7 @@ const authFormSchema = yup.object().shape({
 		.max(30, 'Неверный пароль.Максимум 30 символов'),
 });
 
-export const Autorization = () => {
+export const AutorizationContainer = ({ className }) => {
 	const {
 		register,
 		handleSubmit,
@@ -32,10 +36,21 @@ export const Autorization = () => {
 		},
 		resolver: yupResolver(authFormSchema),
 	});
-	const onSubmit = ({ login, password }) => {};
+
+	const [serverError, setServerError] = useState();
+
+	const onSubmit = ({ login, password }) => {
+		server.autorize(login, password).then(({ error, res }) => {
+			if (error) {
+				setServerError(`Ошибка запроса ${error}`);
+			}
+		});
+	};
+	const formError = errors?.login?.message || errors?.password?.message;
+	const errorMessage = formError || serverError;
 
 	return (
-		<div>
+		<div className={className}>
 			<h2>Авторизация</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<input type="text" placeholder="Логин..." {...register('login')} />
@@ -44,8 +59,24 @@ export const Autorization = () => {
 					placeholder="Пароль..."
 					{...register('password')}
 				/>
-				<button type="submit"> Войти</button>
+				<button type="submit" disabled={!!formError}>
+					{' '}
+					Войти
+				</button>
+				{errorMessage && <div>{errorMessage}</div>}
 			</form>
 		</div>
 	);
 };
+
+export const Autorization = styled(AutorizationContainer)`
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	& > form {
+		display: flex;
+		flex-direction: column;
+	}
+`;

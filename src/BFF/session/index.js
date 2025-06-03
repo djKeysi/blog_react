@@ -1,1 +1,1 @@
-export * from './remove-comment/remove-comment';
+export * from './remove-comment.jsx';
