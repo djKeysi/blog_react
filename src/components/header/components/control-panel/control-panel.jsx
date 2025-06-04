@@ -1,23 +1,23 @@
 import styled from 'styled-components';
-import { Icon } from '../../../../components';
+import { Button, Icon } from '../../../../components';
 import { Link, useNavigate } from 'react-router-dom';
 
 const RightAligned = styled.div`
 	display: flex;
 	justify-content: flex-end;
 `;
-const StyledLink = styled(Link)`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 18px;
-	width: 100px;
-	height: 32px;
-	border: 1px solid #000;
-	background-color: #eee;
-`;
+// const StyledLink = styled(Link)`
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	font-size: 18px;
+// 	width: 100px;
+// 	height: 32px;
+// 	border: 1px solid #000;
+// 	background-color: #eee;
+// `;
 
-const SlyledButton = styled.div`
+const SlyledIcon = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
@@ -28,12 +28,14 @@ const ControlPanelContainer = ({ className }) => {
 	return (
 		<div className={className}>
 			<RightAligned>
-				<StyledLink to="/login">Войти</StyledLink>
+				<Button>
+					<Link to="/login">Войти</Link>
+				</Button>
 			</RightAligned>
 			<RightAligned>
-				<SlyledButton onClick={() => navigate(-1)}>
+				<SlyledIcon onClick={() => navigate(-1)}>
 					<Icon id="fa-backward" margin="10px 0 0 0" />
-				</SlyledButton>
+				</SlyledIcon>
 				<Link to="/post">
 					<Icon id="fa-file-text-o" margin="10px 0 0 16px" />
 				</Link>

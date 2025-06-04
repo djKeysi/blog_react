@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { server } from '../../../BFF/server';
 import styled from 'styled-components';
 import { Input } from '../../input/input';
+import { Button } from '../../button/button';
 
 const authFormSchema = yup.object().shape({
 	login: yup
@@ -60,10 +61,11 @@ export const AutorizationContainer = ({ className }) => {
 					placeholder="Пароль..."
 					{...register('password')}
 				/>
-				<button type="submit" disabled={!!formError}>
+				<Button type="submit" disabled={!!formError}>
 					{' '}
-					Войти
-				</button>
+					Авторизоваться
+				</Button>
+
 				{errorMessage && <div>{errorMessage}</div>}
 			</form>
 		</div>
