@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useState } from 'react';
 import { server } from '../../../BFF/server';
 import styled from 'styled-components';
+import { Input } from '../../input/input';
 
 const authFormSchema = yup.object().shape({
 	login: yup
@@ -53,8 +54,8 @@ export const AutorizationContainer = ({ className }) => {
 		<div className={className}>
 			<h2>Авторизация</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<input type="text" placeholder="Логин..." {...register('login')} />
-				<input
+				<Input type="text" placeholder="Логин..." {...register('login')} />
+				<Input
 					type="password"
 					placeholder="Пароль..."
 					{...register('password')}
@@ -78,5 +79,6 @@ export const Autorization = styled(AutorizationContainer)`
 	& > form {
 		display: flex;
 		flex-direction: column;
+		width: 260px;
 	}
 `;
