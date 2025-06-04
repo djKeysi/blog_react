@@ -2,3 +2,4 @@ export * from './header/header.jsx';
 export * from './icon/icon.jsx';
 export * from './footer/footer.jsx';
 export * from './input/input.jsx';
+export * from './button/button.jsx';
