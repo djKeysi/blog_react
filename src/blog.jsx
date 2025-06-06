@@ -3,6 +3,7 @@ import './index.css';
 import styled from 'styled-components';
 import { Footer, Header } from './components';
 import { Autorization } from './components/pages';
+import { Auto } from './components/pages/authorization/auto';
 
 const AppColumn = styled.div`
 	display: flex;

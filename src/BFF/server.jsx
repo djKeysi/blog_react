@@ -25,7 +25,7 @@ export const server = {
 			res: createSession(user.role_id),
 		};
 	},
-	async regiter(regLogin, regPassword) {
+	async register(regLogin, regPassword) {
 		const user = await getUser(regLogin);
 		if (user) {
 			return {
