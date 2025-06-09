@@ -1,2 +1,2 @@
-export * from './set-session';
+export * from './set-user';
 export * from './action-type';
