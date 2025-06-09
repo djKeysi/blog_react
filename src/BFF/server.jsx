@@ -38,7 +38,9 @@ export const server = {
 
 		return {
 			error: null,
-			res: createSession(user.role_id),
-		};
+			res: 
+			
+		}
+		createSession(user.role_id)
 	},
 };

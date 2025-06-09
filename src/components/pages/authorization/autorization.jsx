@@ -9,6 +9,9 @@ import { Input } from '../../input/input';
 import { Link } from 'react-router-dom';
 import { Button } from '../../button/button';
 import { server } from '../../../BFF';
+import { H2 } from '../../h2/h2';
+import { setSession } from '../../../actions';
+import { dispatch } from 'react-redux';
 
 const authFormSchema = yup.object().shape({
 	login: yup
@@ -61,7 +64,9 @@ export const AutorizationContainer = ({ className }) => {
 		server.autorize(login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса ${error}`);
+				return;
 			}
+			dispatch(setSession(res));
 		});
 	};
 	const formError = errors?.login?.message || errors?.password?.message;
@@ -69,7 +74,7 @@ export const AutorizationContainer = ({ className }) => {
 
 	return (
 		<div className={className}>
-			<h2>Авторизация</h2>
+			<H2>Авторизация</H2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
 					type="text"
