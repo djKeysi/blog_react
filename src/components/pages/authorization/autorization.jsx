@@ -8,10 +8,11 @@ import styled from 'styled-components';
 import { Input } from '../../input/input';
 import { Link } from 'react-router-dom';
 import { Button } from '../../button/button';
-import { server } from '../../../BFF';
+import { server } from '../../../bff';
 import { H2 } from '../../h2/h2';
-import { setSession } from '../../../actions';
-import { dispatch } from 'react-redux';
+import { setUser } from '../../../actions';
+import { useDispatch } from 'react-redux';
+// import { dispatch } from 'react-redux';
 
 const authFormSchema = yup.object().shape({
 	login: yup
@@ -59,14 +60,14 @@ export const AutorizationContainer = ({ className }) => {
 	});
 
 	const [serverError, setServerError] = useState(null);
-
+	const dispatch = useDispatch();
 	const onSubmit = ({ login, password }) => {
 		server.autorize(login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса ${error}`);
 				return;
 			}
-			dispatch(setSession(res));
+			dispatch(setUser(res));
 		});
 	};
 	const formError = errors?.login?.message || errors?.password?.message;
