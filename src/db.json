@@ -1,60 +1,67 @@
 {
-  "users": [
-    {
-      "id": "001",
-      "login": "anton",
-      "password": "qwerty123",
-      "registred_at": "2050-11-25",
-      "role_id": 0
-    },
-    {
-      "id": "697e",
-      "login": "ivan",
-      "password": "qwerty123",
-      "registred_at": "2049-12-19 11:25",
-      "role_id": 2
-    }
-  ],
-  "roles": [
-    {
-      "id": "0",
-      "name": "Администратор"
-    },
-    {
-      "id": "1",
-      "name": "Модератор"
-    },
-    {
-      "id": "2",
-      "name": "Читатель"
-    },
-    {
-      "id": "3",
-      "name": "Гость"
-    }
-  ],
-  "posts": [
-    {
-      "id": "001",
-      "title": "Как стать веб-разработчиком",
-      "image_url": "https://fastly.picsum.photos/id/691/280/150.jpg?hmac=MjlEBHxjHvZkuRYgfKjz6YEYVuj-HPyFl1nzNNHHB34",
-      "content": "Повседневная практика показывает, что реализация намеченных плановых заданий способствует подготовки и реализации модели развития<br>",
-      "published_at": "2050-11-25"
-    },
-    {
-      "id": "002",
-      "title": "I want to show you",
-      "image_url": "https://fastly.picsum.photos/id/691/280/150.jpg?hmac=MjlEBHxjHvZkuRYgfKjz6YEYVuj-HPyFl1nzNNHHB34",
-      "content": "Повседневная практика показывает, что реализация намеченных плановых заданий способствует подготовки и реализации модели развития<br>",
-      "published_at": "2050-11-26"
-    },
-    {
-      "id": "003",
-      "title": "I want to show you22222222222222",
-      "image_url": "https://fastly.picsum.photos/id/691/280/150.jpg?hmac=MjlEBHxjHvZkuRYgfKjz6YEYVuj-HPyFl1nzNNHHB34",
-      "content": "Повседневная практика показывает, что реализация намеченных плановых заданий способствует подготовки и реализации модели развития<br>",
-      "published_at": "2050-11-27"
-    }
-  ],
-  "comments": []
+	"users": [
+		{
+			"id": "001",
+			"login": "anton",
+			"password": "qwerty123",
+			"registred_at": "2049-12-19 11:25",
+			"role_id": 0
+		},
+		{
+			"id": "697e",
+			"login": "ivan",
+			"password": "qwerty123",
+			"registred_at": "2049-12-19 11:25",
+			"role_id": 2
+		},
+		{
+			"id": "e80b",
+			"login": "sergey",
+			"password": "qwerty123",
+			"registred_at": "2039-05-30 07:20",
+			"role_id": 0
+		}
+	],
+	"roles": [
+		{
+			"id": "0",
+			"name": "Администратор"
+		},
+		{
+			"id": "1",
+			"name": "Модератор"
+		},
+		{
+			"id": "2",
+			"name": "Читатель"
+		},
+		{
+			"id": "3",
+			"name": "Гость"
+		}
+	],
+	"posts": [
+		{
+			"id": "001",
+			"title": "Как стать веб-разработчиком",
+			"image_url": "https://fastly.picsum.photos/id/691/280/150.jpg?hmac=MjlEBHxjHvZkuRYgfKjz6YEYVuj-HPyFl1nzNNHHB34",
+			"content": "Повседневная практика показывает, что реализация намеченных плановых заданий способствует подготовки и реализации модели развития<br>",
+			"published_at": "2050-11-25"
+		},
+		{
+			"id": "002",
+			"title": "I want to show you",
+			"image_url": "https://fastly.picsum.photos/id/691/280/150.jpg?hmac=MjlEBHxjHvZkuRYgfKjz6YEYVuj-HPyFl1nzNNHHB34",
+			"content": "Повседневная практика показывает, что реализация намеченных плановых заданий способствует подготовки и реализации модели развития<br>",
+			"published_at": "2050-11-26"
+		},
+		{
+			"id": "003",
+			"title": "I want to show you22222222222222",
+			"image_url": "https://fastly.picsum.photos/id/691/280/150.jpg?hmac=MjlEBHxjHvZkuRYgfKjz6YEYVuj-HPyFl1nzNNHHB34",
+			"content": "Повседневная практика показывает, что реализация намеченных плановых заданий способствует подготовки и реализации модели развития<br>",
+			"published_at": "2050-11-27"
+		}
+	],
+	"comments": []
 }
