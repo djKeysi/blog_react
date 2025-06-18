@@ -3,6 +3,9 @@ import './index.css';
 import styled from 'styled-components';
 import { Footer, Header } from './components';
 import { Autorization, Registration, Users, Post } from './components/pages';
+import { useLayoutEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from './actions';
 
 const AppColumn = styled.div`
 	display: flex;
@@ -15,7 +18,7 @@ const AppColumn = styled.div`
 `;
 
 const Page = styled.div`
-	padding: 120px 0;
+	padding: 120px 0 20px;
 `;
 
 // const H2 = styled.div`
@@ -25,6 +28,19 @@ const Page = styled.div`
 // const Footer = () => <div>Футер</div>;
 
 export const Blog = () => {
+	const dispatch = useDispatch();
+
+	useLayoutEffect(() => {
+		const currentUserDataJSON = sessionStorage.getItem('userData');
+		if (!currentUserDataJSON) {
+			return;
+		}
+
+		const currentUserData = JSON.parse(currentUserDataJSON);
+
+		dispatch(setUser({ ...currentUserData, roleId: Number(currentUserData.roleId) }));
+	}, [dispatch]);
+
 	return (
 		<AppColumn>
 			<Header />
