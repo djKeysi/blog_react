@@ -1,2 +1,2 @@
-export const removePostAsync = (requestServer, postId, id) => () =>
+export const removePostAsync = (requestServer, id) => () =>
 	requestServer('removePost', id);
