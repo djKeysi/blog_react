@@ -44,17 +44,18 @@ export const Blog = () => {
 	return (
 		<AppColumn>
 			<Header />
-			<Routes>
-				<Route path="/" element={<MainBlog />} />
-				<Route path="/login" element={<Autorization />} />
-				<Route path="/register" element={<Registration />} />
-				<Route path="/users" element={<Users />} />
-				<Route path="/post" element={<Post />} />
-				<Route path="/post/:id" element={<Post />} />
-				<Route path="/post/:id/edit" element={<Post />} />
-				<Route path="*" element={<div>Ошибка</div>} />
-			</Routes>
-			<Page />
+			<Page>
+				<Routes>
+					<Route path="/" element={<MainBlog />} />
+					<Route path="/login" element={<Autorization />} />
+					<Route path="/register" element={<Registration />} />
+					<Route path="/users" element={<Users />} />
+					<Route path="/post" element={<Post />} />
+					<Route path="/post/:id" element={<Post />} />
+					<Route path="/post/:id/edit" element={<Post />} />
+					<Route path="*" element={<div>Ошибка</div>} />
+				</Routes>
+			</Page>
 			<Footer />
 			<Modal />
 		</AppColumn>

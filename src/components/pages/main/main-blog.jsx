@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useServerRequest } from '../../../hooks';
-import { PostCard } from './components';
+import { Pagination, PostCard } from './components';
 
 const MainBlogContainer = ({ className }) => {
 	const [post, setPost] = useState([]);
@@ -27,6 +27,7 @@ const MainBlogContainer = ({ className }) => {
 					/>
 				))}
 			</div>
+			<Pagination />
 		</div>
 	);
 };
