@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './index.css';
 import styled from 'styled-components';
 import { Footer, Header, Modal } from './components';
-import { Autorization, Registration, Users, Post } from './components/pages';
+import { Autorization, Registration, Users, Post, MainBlog } from './components/pages';
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './actions';
@@ -44,18 +44,17 @@ export const Blog = () => {
 	return (
 		<AppColumn>
 			<Header />
-			<Page>
-				<Routes>
-					<Route path="/" element={<div>Главная страница</div>} />
-					<Route path="/login" element={<Autorization />} />
-					<Route path="/register" element={<Registration />} />
-					<Route path="/users" element={<Users />} />
-					<Route path="/post" element={<Post />} />
-					<Route path="/post/:id" element={<Post />} />
-					<Route path="/post/:id/edit" element={<Post />} />
-					<Route path="*" element={<div>Ошибка</div>} />
-				</Routes>
-			</Page>
+			<Routes>
+				<Route path="/" element={<MainBlog />} />
+				<Route path="/login" element={<Autorization />} />
+				<Route path="/register" element={<Registration />} />
+				<Route path="/users" element={<Users />} />
+				<Route path="/post" element={<Post />} />
+				<Route path="/post/:id" element={<Post />} />
+				<Route path="/post/:id/edit" element={<Post />} />
+				<Route path="*" element={<div>Ошибка</div>} />
+			</Routes>
+			<Page />
 			<Footer />
 			<Modal />
 		</AppColumn>
