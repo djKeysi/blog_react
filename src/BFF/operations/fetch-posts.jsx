@@ -6,8 +6,8 @@ export const fetchPosts = async (page, limit) => {
 		getPosts(page, limit),
 		getComments(),
 	]);
-	console.log(links);
 
+	console.log('linksssss', links);
 	return {
 		error: null,
 		res: {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button } from '../../../../button/button';
 
-const PaginationContainer = ({ className, setPage, page, lastPage }) => {
+const PaginationContainer = ({ className, page, lastPage, setPage }) => {
 	return (
 		<div className={className}>
 			<Button disabled={page === 1} onClick={() => setPage(1)}>
