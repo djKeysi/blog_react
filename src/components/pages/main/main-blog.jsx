@@ -1,42 +1,56 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { useServerRequest } from '../../../hooks';
-import { Pagination, PostCard } from './components';
+import { Pagination, PostCard, Search } from './components';
 
-import { getLastPageFromLinks } from './utils';
+import { debounce, getLastPageFromLinks } from './utils';
 import { PAGINATION_LIMIT } from '../../../bff/constants';
 
 const MainBlogContainer = ({ className }) => {
 	const [post, setPost] = useState([]);
 	const [page, setPage] = useState(1);
 	const [lastPage, setLastPage] = useState(1);
+	const [shouldSearch, setShouldSearch] = useState(false);
+	const [searchPhrase, setSearchPhrase] = useState('');
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
-		requestServer('fetchPosts', page, PAGINATION_LIMIT).then(
+		requestServer('fetchPosts', searchPhrase, page, PAGINATION_LIMIT).then(
 			({ res: { posts, links } }) => {
 				setPost(posts);
 				// console.log(links);
-
 				setLastPage(getLastPageFromLinks(links));
 			},
 		);
-	}, [requestServer, page]);
+	}, [requestServer, page, shouldSearch]);
+
+	const startDelayedSearch = useMemo(() => debounce(setShouldSearch, 2000), []);
+
+	const onSearch = ({ target }) => {
+		setSearchPhrase(target.value);
+		startDelayedSearch(!shouldSearch);
+	};
 
 	return (
 		<div className={className}>
-			<div className="post-list">
-				{post.map(({ id, title, imageUrl, publishedAt, commentsCount }) => (
-					<PostCard
-						key={id}
-						id={id}
-						title={title}
-						imageUrl={imageUrl}
-						publishedAt={publishedAt}
-						commentsCount={commentsCount}
-					/>
-				))}
-			</div>
+			<Search searchPhrase={searchPhrase} onChange={onSearch} />
+			{post.length ? (
+				<div className="post-list">
+					{post.map(({ id, title, imageUrl, publishedAt, commentsCount }) => (
+						<PostCard
+							key={id}
+							id={id}
+							title={title}
+							imageUrl={imageUrl}
+							publishedAt={publishedAt}
+							commentsCount={commentsCount}
+						/>
+					))}
+				</div>
+			) : (
+				<div className="no-post-found">Статьи не найдены</div>
+			)}
 			{lastPage > 1 && (
 				<Pagination page={page} lastPage={lastPage} setPage={setPage} />
 			)}
@@ -49,5 +63,11 @@ export const MainBlog = styled(MainBlogContainer)`
 		display: flex;
 		flex-wrap: wrap;
 		padding: 20px;
+	}
+
+	& .no-post-found {
+		text-align: center;
+		font-size: 18px;
+		margin-top: 40px;
 	}
 `;
