@@ -23,6 +23,6 @@ export const sessions = {
 		// const user = this.list[hash];
 		//console.log(user);
 
-		return !!dbSession.user && accessRoles.includes(dbSession.user.roleId);
+		return !!dbSession?.user && accessRoles.includes(dbSession.user.roleId);
 	},
 };

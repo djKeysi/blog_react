@@ -1,19 +1,26 @@
-import { Content, H2 } from '../../../components';
+import { H2, PrivateContent } from '../../../components';
 import { TableRow, UserRow } from './components';
 import styled from 'styled-components';
 import { useServerRequest } from '../../../hooks';
 import { useEffect, useState } from 'react';
 import { ROLE } from '../../../constants';
+import { checkAccess } from '../../../utils';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '../../../selectors';
 
 export const UsersContainer = ({ className }) => {
 	const [users, setUsers] = useState([]);
 	const [roles, setRoles] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
+	const userRole = useSelector(selectUserRole);
 
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(
 			([usersRes, rolesRes]) => {
 				if (usersRes.error || rolesRes.error) {
@@ -31,17 +38,20 @@ export const UsersContainer = ({ className }) => {
 		// 	setRoles(res);
 		// });
 		// requestServer('fetchUsers');
-	}, [requestServer, shouldUpdateUserList]);
+	}, [requestServer, shouldUpdateUserList, userRole]);
 
 	const onUserRemove = (userId) => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
 		requestServer('removeUser', userId).then(() => {
 			setShouldUpdateUserList(!shouldUpdateUserList);
 		});
 	};
 
 	return (
-		<div className={className}>
-			<Content error={errorMessage}>
+		<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+			<div className={className}>
 				{/* {errorMessage} ?
 			<div>
 				<H2>Ошибка</H2>
@@ -68,8 +78,8 @@ export const UsersContainer = ({ className }) => {
 						/>
 					))}
 				</div>
-			</Content>
-		</div>
+			</div>
+		</PrivateContent>
 	);
 };
 
@@ -79,5 +89,4 @@ export const Users = styled(UsersContainer)`
 	align-items: center;
 	margin: 0 auto;
 	width: 570px;
-	font-size: 18px;
 `;
