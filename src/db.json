@@ -271,6 +271,17 @@
         "roleId": 0
       },
       "id": "YT1X1KZ"
+    },
+    {
+      "hash": "0.58336707418594424545688070793403312563896179199219",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "password": "qwerty123",
+        "registredAt": "2049-12-19 11:25",
+        "roleId": 0
+      },
+      "id": "qnZF9RF"
     }
   ]
 }
