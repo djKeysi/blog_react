@@ -112,6 +112,20 @@
       "post_id": "002",
       "published_at": "2050-07-28 00:28",
       "content": "sdsdsd"
+    },
+    {
+      "author_id": "001",
+      "post_id": "003",
+      "published_at": "2046-04-12 06:03",
+      "content": "ghghgh",
+      "id": "m0sivZ3"
+    },
+    {
+      "author_id": "001",
+      "post_id": "007",
+      "published_at": "2038-05-13 02:44",
+      "content": "dfdfdf",
+      "id": "9sY7kta"
     }
   ],
   "sessions": [
@@ -246,6 +260,17 @@
         "roleId": 0
       },
       "id": "3YIqYJq"
+    },
+    {
+      "hash": "0.22547627859503549530018062796443700790405273437500",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "password": "qwerty123",
+        "registredAt": "2049-12-19 11:25",
+        "roleId": 0
+      },
+      "id": "YT1X1KZ"
     }
   ]
 }
